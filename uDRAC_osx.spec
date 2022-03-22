@@ -4,11 +4,11 @@ block_cipher = None
 
 
 a = Analysis(['src/uDRAC.py'],
-             pathex=['/Users/nick/Dropbox/uDRAC/src'],
+             pathex=['src'],
 			 binaries=[
 			      ('/System/Library/Frameworks/Tk.framework/Tk', 'tk'),
 			      ('/System/Library/Frameworks/Tcl.framework/Tcl', 'tcl')],
-             datas=[('src/osx-jre', 'osx-jre') , ('src/c6100','c6100'), ('src/c6220','c6220'), ('src/idrac6','idrac6'),  ('src/idrac6-blade', 'idrac6-blade')],
+             datas=[('src/osx-jre', 'osx-jre') , ('src/c6100','c6100'), ('src/c6220','c6220'), ('src/idrac6','idrac6'),  ('src/idrac6-blade', 'idrac6-blade'), ('src/ibm-systemx', 'ibm-systemx')],
              hiddenimports=[],
              hookspath=[],
              runtime_hooks=[],
