@@ -2,10 +2,13 @@
 
 block_cipher = None
 
-a = Analysis(['src\\uDRAC.py'],
-             pathex=['src'],
-             binaries=[],
-             datas=[('src\\win-jre', 'win-jre') , ('src\\c6100','c6100'), ('src\\c6220','c6220'), ('src\\idrac6','idrac6'),  ('src\\idrac6-blade', 'idrac6-blade'), ('src/ibm-systemx', 'ibm-systemx')],
+
+a = Analysis(['imm_kvm/__init__.py'],
+             pathex=['imm_kvm'],
+			 binaries=[
+			      ('/System/Library/Frameworks/Tk.framework/Tk', 'tk'),
+			      ('/System/Library/Frameworks/Tcl.framework/Tcl', 'tcl')],
+             datas=[('imm_kvm/osx-jre', 'osx-jre') ('imm_kvm/ibm-systemx', 'ibm-systemx')],
              hiddenimports=[],
              hookspath=[],
              runtime_hooks=[],
@@ -20,7 +23,7 @@ exe = EXE(pyz,
           a.scripts,
           [],
           exclude_binaries=True,
-          name='uDRAC',
+          name='imm_kvm',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
@@ -32,4 +35,11 @@ coll = COLLECT(exe,
                a.datas,
                strip=False,
                upx=True,
-               name='uDRAC Windows')
+               name='IMM KVM OSX')
+app = BUNDLE(exe,
+        name='IMM KVM.app',
+        icon=None,
+        bundle_identifier=None,
+		info_plist={
+		    'NSHighResolutionCapable': 'True'
+		    },)
